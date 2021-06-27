@@ -28,14 +28,8 @@ ImageNet top-1 accuracy comparison with the state-of-the-art (sota) CNN-based an
 
 ## 1. Requirements
 
-```
-torch>=1.7.0
-torchvision>=0.8.0
-[timm](https://github.com/rwightman/pytorch-image-models)==0.4.5
-[tlt](https://github.com/zihangJiang/TokenLabeling)==0.1.0
-pyyaml
-apex-amp
-```
+torch>=1.7.0; torchvision>=0.8.0; [timm](https://github.com/rwightman/pytorch-image-models)==0.4.5; [tlt](https://github.com/zihangJiang/TokenLabeling)==0.1.0; pyyaml; apex-amp
+
 
 data prepare: ImageNet with the following folder structure, you can extract imagenet by this [script](https://gist.github.com/BIGBALLON/8a71d225eff18d88e469e6ea9b39cef4).
 
@@ -141,7 +135,7 @@ Train volo_d1 on 224 with 310 epoch, acc=84.2
 ```bash
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 ./distributed_train.sh 8 /path/to/imagenet \
   --model volo_d1 --img-size 224 \
-  -b 128 --lr 1.6e-3 --img-size 224 --drop-path 0.1 --apex-amp \
+  -b 128 --lr 1.6e-3 --drop-path 0.1 --apex-amp \
   --token-label --token-label-size 14 --token-label-data /path/to/token_label_data
 ```
 
@@ -168,7 +162,7 @@ Train volo_d2 on 224 with 300 epoch, acc=85.2
 ```
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 ./distributed_train.sh 8 /path/to/imagenet \
   --model volo_d2 --img-size 224 \
-  -b 128 --lr 1.0e-3 --img-size 224 --drop-path 0.2 --apex-amp \
+  -b 128 --lr 1.0e-3 --drop-path 0.2 --apex-amp \
   --token-label --token-label-size 14 --token-label-data /path/to/token_label_data
 ```
 
@@ -187,7 +181,10 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 ./distributed_train.sh 8 /path/to/imagenet 
 
 
 ## 5. Acknowledgement
-We gratefully acknowledge the support of NVIDIA AI Tech Center (NVAITC) to this research project, especially the great helps in computation and technique support from Terry Jianxiong Yin (NVAITC), Qingyi Tao (NVAITC).
+We gratefully acknowledge the support of NVIDIA AI Tech Center (NVAITC) to this research project, especially the great helps in GPU technology supports from Terry Jianxiong Yin (NVAITC) and Qingyi Tao (NVAITC).
 
 Related project: [T2T-ViT](https://github.com/yitu-opensource/T2T-ViT), [Token_labeling](https://github.com/zihangJiang/TokenLabeling), [pytorch-image-models](https://github.com/rwightman/pytorch-image-models), [official imagenet example](https://github.com/pytorch/examples/tree/master/imagenet)
 
+## LICENSE
+
+This repo is under the Apache-2.0 license. For commercial use, please contact with the authors.
